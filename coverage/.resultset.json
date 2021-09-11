@@ -68,6 +68,14 @@
         "branches": {
         }
       },
+      "/Users/joejiang/Desktop/shopify_challenge/app/models/user.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/Users/joejiang/Desktop/shopify_challenge/app/controllers/images_controller.rb": {
         "lines": [
           0,
@@ -144,6 +152,6 @@
         }
       }
     },
-    "timestamp": 1631316257
+    "timestamp": 1631318202
   }
 }
