@@ -16,8 +16,8 @@
           <h1> Welcome <%= current_user.email %></h1>
           <%= link_to "Log Out", logout_path %>
         <% else %>
-          <%= link_to "registration", registration_path, class: 'button1' %>
-          <%= link_to "login", login_path, class: 'button2' %>
+          <%= link_to "Register", registration_path, class: 'button1' %>
+          <%= link_to "Login", login_path, class: 'button2' %>
         <% end %>
       </div>
     </header>
