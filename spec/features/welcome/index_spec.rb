@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 RSpec.describe "welcome page" do
   it "has a welcome message" do
