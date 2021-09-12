@@ -21,4 +21,14 @@ RSpec.describe "welcome page" do
     click_link('Login')
     expect(current_path).to eq(login_path)
   end
+
+  it 'has a search bar link' do 
+    visit root_path
+
+    expect(page).to have_field("query")
+    expect(page).to have_field("search image")
+    
+    click_on("Search")
+    expect(current_path).to eq(search_index_path)
+  end
 end
