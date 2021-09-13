@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
   def index
-    @images = Image.search(params[:query])
+    @images = Image.search_characteristics(params[:query])
     # binding.pry
   end
 end
