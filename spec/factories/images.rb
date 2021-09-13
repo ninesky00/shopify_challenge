@@ -1,9 +1,10 @@
 FactoryBot.define do 
   factory :image, class: Image do 
     title { Faker::Fantasy::Tolkien.character }
-    owner factory: :user
-    text { Faker::Quote.famous_last_words }
-    description { Faker::ProgrammingLanguage.name }
-    characteristic { Faker::Measurement.metric_height }
+    owner { create(:user).username }
+    text { Faker::Quote.unique.famous_last_words }
+    description { Faker::ProgrammingLanguage.unique.name }
+    characteristic { Faker::Measurement.unique.metric_height }
   end
 end
+

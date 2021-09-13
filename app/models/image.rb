@@ -3,8 +3,16 @@ class Image < ApplicationRecord
   validates :description, presence: true
 
   class << self
-    def search(query)
-      where('title like ?', "%#{query}%")
+    def search_characteristics(query)
+      columns = %w{title owner description text}
+      where(columns.map {|c| "#{c} like :query"}.join(' OR '),
+      query: "%#{query}%")
+      # where('title like ?', "%#{query}%")
     end
   end
 end
+
+
+# characteristics = title, owner, description
+# text = tags
+# image search?
