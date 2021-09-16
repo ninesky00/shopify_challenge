@@ -1,6 +1,7 @@
 class Image < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
+  has_one_attached :image
 
   class << self
     def search_characteristics(query)
