@@ -4,7 +4,9 @@ FactoryBot.define do
     owner { create(:user).username }
     text { Faker::Quote.unique.famous_last_words }
     description { Faker::ProgrammingLanguage.unique.name }
-    characteristic { Faker::Measurement.unique.metric_height }
+    after(:build) do |model|
+      model.image.attach(io: File.open(Rails.root.join('spec', 'fixtures','sample.png')), filename: 'sample.png', content_type: 'image/png')
+    end
   end
 end
 
