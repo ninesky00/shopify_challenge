@@ -8,6 +8,7 @@ class ImagesController < ApplicationController
 
   # GET /images/1 or /images/1.json
   def show
+    @image = Image.find(params[:id])
   end
 
   # GET /images/new
@@ -64,6 +65,6 @@ class ImagesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def image_params
-      params.fetch(:image, {})
+      params.require(:image).permit(:title, :owner, :text, :description, :image)
     end
 end

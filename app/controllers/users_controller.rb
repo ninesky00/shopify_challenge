@@ -6,10 +6,9 @@ class UsersController < ApplicationController
   def create
     user = User.new(user_params)
     if matching_password? && user.save
-      UserMailer.welcome_email(user).deliver_now
       flash[:notice] = 'You signed up successfully'
       session[:user_id] = user.id
-      redirect_to dashboard_user_path(user)
+      redirect_to dashboard_path(user)
     else
       flash[:notice] = user.errors.full_messages
       flash[:notice] = 'Passwords do not match' unless matching_password?
@@ -25,7 +24,7 @@ class UsersController < ApplicationController
 
   def user_params
     params[:user][:email].downcase!
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation)
   end
 
   def matching_password?
