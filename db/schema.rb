@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_15_202555) do
+ActiveRecord::Schema.define(version: 2021_09_16_233607) do
 
   create_table "active_storage_attachments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -40,6 +40,15 @@ ActiveRecord::Schema.define(version: 2021_09_15_202555) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "colors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "r"
+    t.integer "g"
+    t.integer "b"
+    t.float "h"
+    t.float "s"
+    t.float "l"
+  end
+
   create_table "images", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
     t.string "owner"
@@ -48,6 +57,13 @@ ActiveRecord::Schema.define(version: 2021_09_15_202555) do
     t.string "characteristic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "portfolio_colors", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "image_id", null: false
+    t.bigint "color_id", null: false
+    t.index ["color_id"], name: "index_portfolio_colors_on_color_id"
+    t.index ["image_id"], name: "index_portfolio_colors_on_image_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -60,4 +76,6 @@ ActiveRecord::Schema.define(version: 2021_09_15_202555) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "portfolio_colors", "colors"
+  add_foreign_key "portfolio_colors", "images"
 end
