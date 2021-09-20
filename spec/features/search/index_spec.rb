@@ -18,10 +18,6 @@ RSpec.describe "search index page" do
     expect(page).to have_content(target_image.characteristic)
 
     expect(page).to_not have_content(decoy_image.title)
-    expect(page).to_not have_content(decoy_image.owner)
-    expect(page).to_not have_content(decoy_image.text)
-    expect(page).to_not have_content(decoy_image.description)
-    expect(page).to_not have_content(decoy_image.characteristic)
   end
 
   it "can search image database regardless of case sensitivity" do 
@@ -40,10 +36,6 @@ RSpec.describe "search index page" do
     expect(page).to have_content(target_image.characteristic)
 
     expect(page).to_not have_content(decoy_image.title)
-    expect(page).to_not have_content(decoy_image.owner)
-    expect(page).to_not have_content(decoy_image.text)
-    expect(page).to_not have_content(decoy_image.description)
-    expect(page).to_not have_content(decoy_image.characteristic)
   end
   
   it "edge case testing for title queries" do 
@@ -107,9 +99,5 @@ RSpec.describe "search index page" do
     expect(page).to have_content(description_image.characteristic)
 
     expect(page).to_not have_content(decoy_image.title)
-    expect(page).to_not have_content(decoy_image.owner)
-    expect(page).to_not have_content(decoy_image.text)
-    expect(page).to_not have_content(decoy_image.description)
-    expect(page).to_not have_content(decoy_image.characteristic)
   end
 end
