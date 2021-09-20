@@ -21,7 +21,7 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    @image = Image.new(image_params)
+    @image = Image.new(image_params.merge(owner: current_user.username))
 
     respond_to do |format|
       if @image.save
@@ -70,6 +70,6 @@ class ImagesController < ApplicationController
     end
 
     def image_owner?
-      current_user == @image.owner
+      current_user.username == @image.owner
     end
 end

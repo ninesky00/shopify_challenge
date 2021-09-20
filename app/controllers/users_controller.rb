@@ -8,16 +8,12 @@ class UsersController < ApplicationController
     if matching_password? && user.save
       flash[:notice] = 'You signed up successfully'
       session[:user_id] = user.id
-      redirect_to dashboard_path(user)
+      redirect_to root_path
     else
       flash[:notice] = user.errors.full_messages
       flash[:notice] = 'Passwords do not match' unless matching_password?
       redirect_to registration_path
     end
-  end
-
-  def dashboard
-    @user = User.find(params[:id])
   end
 
   private
