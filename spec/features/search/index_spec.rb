@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 RSpec.describe "search index page" do
   it "can search the image database based on title" do 
