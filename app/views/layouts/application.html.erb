@@ -11,9 +11,10 @@
   </head>
 
     <header>
+      <%= link_to "Home", root_path %>
       <div class ="login">
         <% if current_user %>
-          <h1> Welcome <%= current_user.email %></h1>
+          <h1> Welcome <%= current_user.username %></h1>
           <%= link_to "My Images", images_user_path(current_user) %>
           <%= link_to "Log Out", logout_path %>
         <% else %>
