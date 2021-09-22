@@ -5,7 +5,7 @@ FactoryBot.define do
     text { Faker::Quote.unique.famous_last_words }
     description { Faker::ProgrammingLanguage.unique.name }
     after(:build) do |model|
-      model.image.attach(io: File.open(Rails.root.join('spec', 'fixtures','sample.png')), filename: 'sample.png', content_type: 'image/png')
+      model.image.attach(io: File.open(Rails.root.join('spec', 'fixtures', 'files', 'sample.png')), filename: 'sample.png', content_type: 'image/png')
     end
   end
 end

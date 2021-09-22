@@ -7,8 +7,6 @@ RSpec.describe "image index page" do
 
     image_list.each do |image|
       expect(page).to have_content(image.title)
-      expect(page).to have_content(image.owner)
-      expect(page).to have_content(image.description)
     end
   end
 end

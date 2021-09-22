@@ -2,6 +2,7 @@ class Image < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true
   has_one_attached :image
+  validates :image, attached: true, content_type: %w(image/png image/jpg image/jpeg)
 
   class << self
     def search_characteristics(query)

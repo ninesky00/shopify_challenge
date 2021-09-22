@@ -21,15 +21,17 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    @image = Image.new(image_params.merge(owner: current_user.username))
+    if current_user
+      @image = Image.new(image_params.merge(owner: current_user.username))
 
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: "Image was successfully created." }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @image.save
+          format.html { redirect_to @image, notice: "Image was successfully created." }
+          format.json { render :show, status: :created, location: @image }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @image.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

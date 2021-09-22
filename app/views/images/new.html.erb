@@ -1,5 +1,9 @@
 <h1>New Image</h1>
 
-<%= render 'form', image: @image %>
+<% if current_user%>
+  <%= render 'form', image: @image %>
+<% else %>
+  <h1>Log in to upload images</h1>
+<% end %>
 
 <%= link_to 'Back', images_path %>
