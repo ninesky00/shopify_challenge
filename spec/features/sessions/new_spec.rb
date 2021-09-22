@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'pry'
+
 RSpec.describe 'new user session' do
   it 'allows user to login' do
     visit login_path

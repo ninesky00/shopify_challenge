@@ -21,28 +21,32 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    @image = Image.new(image_params.merge(owner: current_user.username))
+    if current_user
+      @image = Image.new(image_params.merge(owner: current_user.username))
 
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to @image, notice: "Image was successfully created." }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @image.save
+          format.html { redirect_to @image, notice: "Image was successfully created." }
+          format.json { render :show, status: :created, location: @image }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @image.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   # PATCH/PUT /images/1 or /images/1.json
   def update
-    respond_to do |format|
-      if @image.update(image_params)
-        format.html { redirect_to @image, notice: "Image was successfully updated." }
-        format.json { render :show, status: :ok, location: @image }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
+    if image_owner?
+      respond_to do |format|
+        if @image.update(image_params)
+          format.html { redirect_to @image, notice: "Image was successfully updated." }
+          format.json { render :show, status: :ok, location: @image }
+        else
+          format.html { render :edit, status: :unprocessable_entity }
+          format.json { render json: @image.errors, status: :unprocessable_entity }
+        end
       end
     end
   end

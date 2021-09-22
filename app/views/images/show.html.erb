@@ -4,5 +4,7 @@
 <p>owner:<%= @image.owner %></p>
 <p>description:<%= @image.description %></p>
 
-<%= link_to 'Edit', edit_image_path(@image) %> |
+<% if current_user && current_user.username == @image.owner %>
+  <%= link_to 'Edit', edit_image_path(@image) %> |
+<% end %>
 <%= link_to 'Back', images_path %>
