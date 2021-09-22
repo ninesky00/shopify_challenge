@@ -1,6 +1,6 @@
 ### About
 
-Based on Shopify Developer Intern Challenge. The repo is built entirely on Rails 6, with the hopes of using React if time allowed. I used MySQL for database storage
+Based on Shopify Developer Intern Challenge. The repo is built entirely on Rails 6, with the hopes of using React if time allowed. I used MySQL for database storage, ActiveStorage for uploads.
 
 
 ### Goals accomplished
@@ -56,7 +56,7 @@ Access control with some permissions.
 A more robust permission services, taking if statements out of the views.  
 Image search based on image colors.  
 Tagging feature for images, and be able to search based on tags.  
-CSS styling(I was hoping to exercise some React components since I'm taking a Udemy course on it, but I spent much more time on the image color search than anticipated.)  
+CSS styling(I was hoping to exercise some React components I learned from an Udemy course,but I spent much more time on the image color search than anticipated.)  
 
 
 <!-- CONTACT -->
