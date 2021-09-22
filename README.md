@@ -1,24 +1,65 @@
-# README
+### About
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Based on Shopify Developer Intern Challenge. The repo is built entirely on Rails 6, with the hopes of using React if time allowed. I used MySQL for database storage
 
-Things you may want to cover:
 
-* Ruby version
+### Goals accomplished
+Search functionaliby from characteristics of images.  
+Attemped image search by storing picture colors.(future implementation)  
+Secure uploading of single images.  
+Access control with some permissions.  
 
-* System dependencies
 
-* Configuration
+## Versions
 
-* Database creation
+- Ruby 2.7.1
 
-* Database initialization
+- Rails 6.1.4.1
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+<!-- TABLE OF CONTENTS -->
+<details open="open">
+  <summary>Table of Contents</summary>
+  <ol>
+    <li><a href="#installation">Installation</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ol>
+</details>
 
-* ...
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Installation
+
+1. Fork and Clone the repo
+   ```
+   git clone git@github.com:ninesky00/shopify_challenge.git
+   ```
+2. Install gems
+   ```
+   bundle install
+   ```
+3. Setup the database: [MySQL](https://www.mysql.com/downloads/)
+   ```
+   rails db:setup
+   ```
+4. Start the server
+    ```
+    rails s
+    ```
+
+<!-- FUTURE ITERATIONS -->
+
+## Future Iterations
+A more robust permission services, taking if statements out of the views.  
+Image search based on image colors.  
+Tagging feature for images, and be able to search based on tags.  
+CSS styling(I was hoping to exercise some React components since I'm taking a Udemy course on it, but I spent much more time on the image color search than anticipated.)  
+
+
+<!-- CONTACT -->
+## Contact
+
+- Joe Jiang - [Github](https://github.com/ninesky00) [LinkedIn](https://www.linkedin.com/in/joe-jiang01/) <jiangzho@gmail.com>
