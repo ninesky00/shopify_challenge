@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def images
+    @images = Image.where(owner:current_user.username)
+  end
+  
   def new
     @user = User.new
   end

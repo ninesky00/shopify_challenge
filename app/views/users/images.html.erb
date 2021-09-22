@@ -1,0 +1,9 @@
+<% @images.each do |image| %>
+  <ul>
+    <li>title: <%= image.title %></li>
+    <li>owner: <%= image.owner %></li>
+    <li>text: <%= image.text %></li>
+    <li>description: <%= image.description %></li>
+    <li><%= image_tag image.image.variant(resize_to_limit: [300, 300]) %></li>
+  </ul>
+<% end %>
