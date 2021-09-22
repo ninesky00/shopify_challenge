@@ -8,7 +8,6 @@ class ImagesController < ApplicationController
 
   # GET /images/1 or /images/1.json
   def show
-    @image = Image.find(params[:id])
   end
 
   # GET /images/new
@@ -22,7 +21,7 @@ class ImagesController < ApplicationController
 
   # POST /images or /images.json
   def create
-    @image = Image.new(image_params)
+    @image = Image.new(image_params.merge(owner: current_user.username))
 
     respond_to do |format|
       if @image.save
@@ -50,10 +49,12 @@ class ImagesController < ApplicationController
 
   # DELETE /images/1 or /images/1.json
   def destroy
-    @image.destroy
-    respond_to do |format|
-      format.html { redirect_to images_url, notice: "Image was successfully destroyed." }
-      format.json { head :no_content }
+    if image_owner?
+      @image.destroy
+      respond_to do |format|
+        format.html { redirect_to images_url, notice: "Image was successfully destroyed." }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -66,5 +67,9 @@ class ImagesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def image_params
       params.require(:image).permit(:title, :owner, :text, :description, :image)
+    end
+
+    def image_owner?
+      current_user.username == @image.owner
     end
 end
