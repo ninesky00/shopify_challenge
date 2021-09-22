@@ -30,4 +30,14 @@ RSpec.describe "welcome page" do
     click_on("Search")
     expect(current_path).to eq(search_index_path)
   end
+
+  it 'once logged as a user, has a my images link' do 
+    user = create :user
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    user.authenticate(user.password)
+
+    visit root_path
+    click_link 'My Images'
+    expect(current_path).to eq(images_user_path(user.id))
+  end
 end
